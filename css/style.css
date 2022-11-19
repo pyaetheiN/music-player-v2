@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(109.6deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Oswald", sans-serif;
+  font-size: 16px;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+h1 {
+  font-style: italic;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.music__info {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+.music__cover {
+  width: 90px;
+  -webkit-animation: rotate linear infinite 3s;
+          animation: rotate linear infinite 3s;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+@-webkit-keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.music__container {
+  display: flex;
+  gap: 2rem;
+}
+.music__container.play .music__cover {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+.music__navigation {
+  width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.music__navigation .action-btn {
+  cursor: pointer;
+  transform: scale(0.8);
+}
+.music__navigation .action-btn--big {
+  transform: scale(1.5);
+}/*# sourceMappingURL=style.css.map */
