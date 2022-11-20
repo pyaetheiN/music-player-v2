@@ -9,11 +9,20 @@ const audio = document.querySelector('.music__audio');
 const cover = document.querySelector('.music__cover');
 const progressContainer = document.querySelector('.music__progress');
 const progressBar = document.querySelector('.music__progress--bar');
+const volBtnContainer = document.querySelector('.music__volume');
+const volumeContainer = document.querySelector('.music__volume--container');
+const volumeBar = document.querySelector('.music__volume--bar');
+const volumeMute = document.querySelector('.vol-btn--mute');
+const volumeHighest = document.querySelector('.vol-btn--highest');
+const indicator = document.querySelector('.music__volume--indicator');
 
-// initially load song
+// initially load a song
 let songIndex = 0;
 
 loadSong();
+
+// initially set a volume
+audio.volume = 0.5
 
 // functions
 function loadSong(){
@@ -80,6 +89,49 @@ function setProgress(e){
   audio.currentTime = (clickX / width) * duration; // * currentTime
 }
 
+function updateVolume(e){
+  const width = this.clientWidth;
+  const clickX = e.offsetX;
+  audio.volume = clickX / width;
+
+  const volumeProgress = (clickX / width) * 100;
+  volumeBar.style.width = `${volumeProgress}%`;
+
+  const indicatorProgress = volumeProgress - 2; // scss line 136
+  indicator.style.left = `${indicatorProgress}%`;
+}
+
+function toggleMute(){
+  volumeMute.classList.toggle('muted');
+
+  if(volumeMute.classList.contains('muted')){
+    audio.volume = 0;
+    volumeBar.style.width = `0%`;
+    indicator.style.left = `0%`;
+    // volumeMute.querySelector('i').classList.replace('fa-volume-low', 'fa-volume-xmark');
+    // volumeMute.style.marginRight = `-0.2rem`;
+  } else{
+    audio.volume = 0.5
+    volumeBar.style.width = `48%`;
+    indicator.style.left = `48%`;
+    // volumeMute.querySelector('i').classList.replace('fa-volume-xmark', 'fa-volume-low');
+  }
+}
+
+function toggleHighest(){
+  volumeHighest.classList.toggle('muted');
+
+  if(volumeHighest.classList.contains('muted')){
+    audio.volume = 1;
+    volumeBar.style.width = `100%`;
+    indicator.style.left = `98%`;
+  } else{
+    audio.volume = 0.5
+    volumeBar.style.width = `48%`;
+    indicator.style.left = `48%`;
+  }
+}
+
 // event listeners
 playBtn.addEventListener('click', toggle);
 prevBtn.addEventListener('click', prevSong);
@@ -87,3 +139,6 @@ nextBtn.addEventListener('click', nextSong);
 audio.addEventListener('ended', nextSong);
 audio.addEventListener('timeupdate', updateProgress); // * timeupdate
 progressContainer.addEventListener('click', setProgress);
+volumeContainer.addEventListener('click', updateVolume);
+volumeMute.addEventListener('click', toggleMute);
+volumeHighest.addEventListener('click', toggleHighest);

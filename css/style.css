@@ -73,7 +73,7 @@ h1 {
 }
 .music__progress {
   width: 100%;
-  height: 3px;
+  height: 4px;
   background-color: rgba(255, 255, 255, 0.4);
   border-radius: 1rem;
   margin-top: 0.5rem;
@@ -81,7 +81,7 @@ h1 {
 }
 .music__progress--bar {
   width: 0%;
-  height: 3px;
+  height: 4px;
   background-color: rgba(255, 255, 255, 0.5);
   transition: 0.2s;
 }
@@ -97,4 +97,42 @@ h1 {
 }
 .music__navigation .action-btn--big {
   transform: scale(1.2);
+}
+.music__volume {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.music__volume--container {
+  width: 70%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 1rem;
+  position: relative;
+  margin-top: 0.1rem;
+  cursor: pointer;
+}
+.music__volume--bar {
+  width: 50%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: 0.2s;
+}
+.music__volume--indicator {
+  width: 8px;
+  height: 8px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  position: absolute;
+  top: -2px;
+  left: 48%;
+  transition: 0.2s;
+}
+.music__volume .vol-btn {
+  transform: scale(0.75);
+}
+.music__volume .vol-btn:first-of-type {
+  margin-right: 0.2rem;
 }/*# sourceMappingURL=style.css.map */
