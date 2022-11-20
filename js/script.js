@@ -97,12 +97,13 @@ function updateVolume(e){
   const volumeProgress = (clickX / width) * 100;
   volumeBar.style.width = `${volumeProgress}%`;
 
-  const indicatorProgress = volumeProgress - 2; // scss line 136
+  const indicatorProgress = volumeProgress - 3; // scss line 136
   indicator.style.left = `${indicatorProgress}%`;
 }
 
 function toggleMute(){
   volumeMute.classList.toggle('muted');
+  volumeHighest.classList.remove('highest'); // *
 
   if(volumeMute.classList.contains('muted')){
     audio.volume = 0;
@@ -119,9 +120,10 @@ function toggleMute(){
 }
 
 function toggleHighest(){
-  volumeHighest.classList.toggle('muted');
+  volumeHighest.classList.toggle('highest');
+  volumeMute.classList.remove('muted'); // *
 
-  if(volumeHighest.classList.contains('muted')){
+  if(volumeHighest.classList.contains('highest')){
     audio.volume = 1;
     volumeBar.style.width = `100%`;
     indicator.style.left = `98%`;

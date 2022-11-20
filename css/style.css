@@ -132,6 +132,7 @@ h1 {
 }
 .music__volume .vol-btn {
   transform: scale(0.75);
+  cursor: pointer;
 }
 .music__volume .vol-btn:first-of-type {
   margin-right: 0.2rem;
